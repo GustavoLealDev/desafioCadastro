@@ -14,7 +14,7 @@ O dono do abrigo de animais que será o usuário do seu programa será capaz de:
 
 O sistema deve ser implementado utilizando conceitos de Orientação a Objetos e outras boas práticas de programação. 🚀
 
-## Conhecimentos irei aplicar:
+## Conhecimentos que irei aplicar:
 - Orientação a Objetos (OO)
 - Manipulação de arquivos e arrays
 - Java IO
