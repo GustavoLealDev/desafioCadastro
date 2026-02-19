@@ -63,3 +63,30 @@ O menu deve ser exibido no terminal e o usuário deve escolher uma opção digit
 2. Caso o usuário digite um número inválido, o menu deverá ser exibido novamente.  
 3. O usuário poderá digitar apenas números, não sendo permitido letras ou caracteres especiais.  
 
+## 📍 Passo 3: Cadastro de Novos Pets 📝
+
+O usuário, ao selecionar a opção 1, deve ser capaz de cadastrar um novo pet. Neste momento, você deverá ler as **PERGUNTAS** do arquivo `formulario.txt` e armazenar as respostas em um objeto do tipo `Pet`.
+
+
+ ⚠️ Regras
+
+1. O usuário obrigatoriamente deverá cadastrar um pet com **nome e sobrenome**, caso contrário, deverá ser lançada uma exceção.  
+
+2. O nome completo **não poderá conter caracteres especiais**, sendo permitido apenas letras de **A-Z**.  
+
+3. Para os campos **TIPO** e **SEXO** do pet, deverá ser utilizado `ENUM`.  
+
+4. Na pergunta sobre o endereço, o sistema deverá solicitar:
+   - Número da casa  
+   - Cidade  
+   - Rua  
+
+5. Na idade e peso aproximados do pet, o usuário poderá digitar números com vírgulas ou ponto, mas somente números.
+6. Caso o usuário digite um peso maior que 60kg ou um peso menor que 0.5kg, lance uma exceção.
+7. Caso o usuário digite uma idade maior que 20 anos, lance uma exceção.
+8. Caso o usuário digite uma idade menor que 1 ano (idade em meses), transforme em 0.x anos.
+9. No campo raça o usuário não poderá usar números nem caracteres especiais.
+10. Nas perguntas sobre NOME, RAÇA, PESO, IDADE e ENDEREÇO (somente o campo número), caso o usuário NÃO INFORME ou deixe em branco, você deverá preencher com NÃO INFORMADO (deve ser uma constante)!
+
+
+
