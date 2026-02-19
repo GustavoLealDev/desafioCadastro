@@ -42,3 +42,24 @@ Crie um arquivo chamado `formulario.txt`, que deverá conter as seguintes pergun
 Sua aplicação deve ler o conteúdo desse arquivo `.txt` e exibir as perguntas no terminal.
 
 Não é permitido usar o "print" nas perguntas no código, você deverá LER o arquivo!
+
+## 📌 Passo 2: Criação do Menu Inicial
+
+Após o arquivo imprimir o conteúdo do `formulario.txt` no terminal, deve ser criado um menu inicial com as seguintes opções:
+
+1. Cadastrar um novo pet  
+2. Alterar os dados do pet cadastrado  
+3. Deletar um pet cadastrado  
+4. Listar todos os pets cadastrados  
+5. Listar pets por algum critério (idade, nome ou raça)  
+6. Sair  
+
+O menu deve ser exibido no terminal e o usuário deve escolher uma opção digitando o número correspondente.
+
+
+⚠️ Regras
+
+1. O usuário não poderá utilizar `0` ou números negativos.  
+2. Caso o usuário digite um número inválido, o menu deverá ser exibido novamente.  
+3. O usuário poderá digitar apenas números, não sendo permitido letras ou caracteres especiais.  
+
