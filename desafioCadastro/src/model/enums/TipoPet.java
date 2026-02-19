@@ -3,8 +3,7 @@ package model.enums;
 public enum TipoPet {
 	
 	CACHORRO("Cachorro"),
-	GATO("Gato"),
-	OUTRO("Outro");
+	GATO("Gato");
 	
 	private String descricao;
 	
