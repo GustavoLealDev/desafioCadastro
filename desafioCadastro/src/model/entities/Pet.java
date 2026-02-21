@@ -4,11 +4,13 @@ import model.enums.SexoPet;
 import model.enums.TipoPet;
 
 public class Pet {
+	
+	public static final String NAO_INFORMADO = "Não informado";
 
 	private String nomeCompleto;
 	private String raca;
-	private double idade;
-	private double peso;
+	private Double idade;
+	private Double peso;
 	private TipoPet tipoPet;
 	private SexoPet sexoPet;
 	private Endereco endereco;
@@ -42,7 +44,7 @@ public class Pet {
 		this.raca = raca;
 	}
 
-	public double getIdade() {
+	public Double getIdade() {
 		return idade;
 	}
 
@@ -50,7 +52,7 @@ public class Pet {
 		this.idade = idade;
 	}
 
-	public double getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
