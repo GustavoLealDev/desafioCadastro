@@ -10,6 +10,7 @@ public class ValidadorService {
 	public String validarNome(Scanner sc) {
 
 		while (true) {
+			System.out.print("R: ");
 			try {
 				String nomeCompleto = sc.nextLine();
 
@@ -37,6 +38,7 @@ public class ValidadorService {
 
 	public Double validarIdade(Scanner sc) {
 
+		System.out.print("R: ");
 		while (true) {
 			String input = sc.nextLine().trim();
 
@@ -62,6 +64,7 @@ public class ValidadorService {
 	}
 
 	public Double validarPeso(Scanner sc) {
+		System.out.print("R: ");
 		while (true) {
 			String input = sc.nextLine().trim();
 
@@ -88,12 +91,9 @@ public class ValidadorService {
 
 	public TipoPet validarTipoPet(Scanner sc) {
 
+		System.out.print("R: ");
 	    while (true) {
 	        try {
-	            System.out.println("Escolha o tipo do pet:");
-	            System.out.println("1 - Cachorro");
-	            System.out.println("2 - Gato");
-
 	            String input = sc.nextLine().trim();
 	            int opcao = Integer.parseInt(input);
 
@@ -115,12 +115,9 @@ public class ValidadorService {
 	
 	public SexoPet validarSexoPet(Scanner sc) {
 
+		System.out.print("R: ");
 	    while (true) {
 	        try {
-	            System.out.println("Escolha o sexo do pet:");
-	            System.out.println("1 - Macho");
-	            System.out.println("2 - Fêmea");
-
 	            String input = sc.nextLine().trim();
 	            int opcao = Integer.parseInt(input);
 

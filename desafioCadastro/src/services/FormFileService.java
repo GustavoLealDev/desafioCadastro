@@ -23,11 +23,14 @@ public class FormFileService {
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-			bw.write("1 - Qual o nome e sobrenome do pet?" + "\n2 - Qual o tipo do pet (Cachorro/Gato)"
-					+ "\n3 - Qual o sexo do animal?" + "\n4 - Qual endereço e bairro que ele foi encontrado?"
-					+ "\n5 - Qual a idade aproximada do pet?" + "\n6 - Qual o peso aproximado do pet?"
-					+ "\n7 - Qual a raça do pet?");
-			bw.flush();
+			bw.write("1 - Qual o nome e sobrenome do pet: " + 
+					"\n2 - Qual o tipo do pet (1 - Cachorro/ 2 - Gato): " + 
+					"\n3 - Qual o sexo do animal (1 - MACHO/ 2 - FEMEA): " + 
+					"\n4 - Digite seu endereço: " + 
+					"\n5 - Qual a idade aproximada do pet: " + 
+					"\n6 - Qual o peso aproximado do pet: "+ 
+					"\n7 - Qual a raça do pet: ");
+			;
 			System.out.println("Arquivo criado com sucesso!");
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());

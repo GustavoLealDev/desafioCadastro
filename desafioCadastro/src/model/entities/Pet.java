@@ -1,31 +1,40 @@
 package model.entities;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import model.enums.SexoPet;
 import model.enums.TipoPet;
 
 public class Pet {
-	
-	public static final String NAO_INFORMADO = "Não informado";
 
 	private String nomeCompleto;
-	private String raca;
-	private Double idade;
-	private Double peso;
 	private TipoPet tipoPet;
 	private SexoPet sexoPet;
 	private Endereco endereco;
+	private Double idade;
+	private Double peso;
+	private String raca;
 
-	public Pet() {}
+	private static final String NAO_INFORMADO = "Não Informado";
 	
-	public Pet(String nomeCompleto, String raca, double idade, double peso, TipoPet tipoPet, SexoPet sexoPet,
-			Endereco endereco) {
+	public Pet() {
+	}
+
+	public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, Endereco endereco, Double idade, Double peso,String raca) {
 		this.nomeCompleto = nomeCompleto;
-		this.raca = raca;
-		this.idade = idade;
-		this.peso = peso;
 		this.tipoPet = tipoPet;
 		this.sexoPet = sexoPet;
 		this.endereco = endereco;
+		this.idade = idade;
+		this.peso = peso;
+		this.raca = raca;
 	}
 
 	public String getNomeCompleto() {
@@ -34,30 +43,6 @@ public class Pet {
 
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
-	}
-
-	public String getRaca() {
-		return raca;
-	}
-
-	public void setRaca(String raca) {
-		this.raca = raca;
-	}
-
-	public Double getIdade() {
-		return idade;
-	}
-
-	public void setIdade(double idade) {
-		this.idade = idade;
-	}
-
-	public Double getPeso() {
-		return peso;
-	}
-
-	public void setPeso(double peso) {
-		this.peso = peso;
 	}
 
 	public TipoPet getTipoPet() {
@@ -84,16 +69,73 @@ public class Pet {
 		this.endereco = endereco;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("1 - " + nomeCompleto + "\n");
-		sb.append("2 - " + tipoPet.getDescricao() + "\n");
-		sb.append("3 - " + sexoPet.getDescricao() + "\n");
-		sb.append("4 - " + endereco.toString() + "\n");
-		sb.append("5 - " + idade + "\n");
-		sb.append("6 - " + peso + "\n");
-		sb.append("7 - " + raca + "\n");
-		return sb.toString();
+	public Double getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Double idade) {
+		this.idade = idade;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	public String getRaca() {
+		return raca;
+	}
+
+	public void setRaca(String raca) {
+		this.raca = raca;
+	}
+
+	public static Path getCadastro() {
+		return cadastro;
+	}
+	
+	private String formatar(Object valor) {
+	    return (valor == null || valor.toString().isBlank())
+	            ? NAO_INFORMADO
+	            : valor.toString();
+	}
+
+	static final Path cadastro = Paths.get("C:\\temp\\petsCadastrados");
+
+	public void salvarPet() {
+
+		String nomeRegistrado = getNomeCompleto().replaceAll(" ", "");
+		LocalDateTime dataHoraAtual = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("(dd-MM-yyyy_HH-mm-ss)");
+
+		String nomeArquivo = formatter.format(dataHoraAtual) + nomeRegistrado + ".txt";
+
+		File file = new File(String.valueOf(cadastro));
+		File fileCadastro = new File(file, nomeArquivo);
+		if (!file.exists()) {
+			if (file.mkdirs()) {
+				System.out.println("Arquivo criado com sucesso");
+			} else {
+				System.out.println("Error: Tente criar o cadastro novamente.");
+			}
+		}
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileCadastro))) {
+			bw.write("Nome: " + getNomeCompleto() + 
+					"\nTipo do Pet: " + formatar(getTipoPet()) + 
+					"\nSexo do Pet: "+ formatar(getSexoPet()) + 
+					"\nEndereço: " + formatar(getEndereco().getRua()) + ", " + formatar(getEndereco().getNumero()) + ", " + formatar(getEndereco().getCidade()) + 
+					"\nIdade: " + formatar(getIdade()) + " ano(s)"+ 
+					"\nPeso: " + formatar(getPeso()) + " Kg" + 
+					"\nRaça: " + formatar(getRaca()));
+			bw.flush();
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+
+		System.out.println("Cadastro do pet salvo em: " + fileCadastro.getAbsolutePath());
 	}
 }

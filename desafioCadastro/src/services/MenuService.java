@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class MenuService {
 
-    private Scanner input;
+    private Scanner sc;
 
-    public MenuService(Scanner input) {
-        this.input = input;
+    public MenuService(Scanner sc) {
+        this.sc = sc;
     }
 
     public int printMenu() {
@@ -21,11 +21,12 @@ public class MenuService {
             System.out.println("5. Alterar os dados do pet cadastrado");
             System.out.println("6. Sair");
 
-            System.out.print("Digite um número de 1 a 6: ");
+            System.out.println("Digite um número de 1 a 6: ");
+            System.out.println("---------------------------------------------");
 
-            if (input.hasNextInt()) {
-                int escolha = input.nextInt();
-                input.nextLine();
+            if (sc.hasNextInt()) {
+                int escolha = sc.nextInt();
+                sc.nextLine();
 
                 if (escolha >= 1 && escolha <= 6) {
                     return escolha;
@@ -35,7 +36,7 @@ public class MenuService {
 
             } else {
                 System.out.println("Entrada inválida. Digite apenas números.\n");
-                input.nextLine();
+                sc.nextLine();
             }
         }
     }

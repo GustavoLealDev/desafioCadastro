@@ -17,17 +17,14 @@ public class CadastrarPet {
 		pet.setNomeCompleto(validador.validarNome(sc));
 
 		FormFileService.readLine(2);
-		System.out.println("Escolha uma opção: 1 - Cachorro, 2 - Gato");
 		pet.setTipoPet(validador.validarTipoPet(sc));
 
 		FormFileService.readLine(3);
-		System.out.println("Escolha uma opção: 1 - Macho, 2 - Fêmea");
 		pet.setSexoPet(validador.validarSexoPet(sc));
 
 		FormFileService.readLine(4);
-		System.out.print("\nNúmero  da casa: ");
 		endereco.setNumero(validador.validarNumero(sc));
-
+		
 		System.out.print("Rua: ");
 		endereco.setRua(sc.nextLine());
 
@@ -44,6 +41,8 @@ public class CadastrarPet {
 
 		FormFileService.readLine(7);
 		pet.setRaca(sc.nextLine());
+		
+		pet.salvarPet();
 
 	}
 
