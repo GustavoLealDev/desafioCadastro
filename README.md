@@ -57,7 +57,7 @@ Após o arquivo imprimir o conteúdo do `formulario.txt` no terminal, deve ser c
 O menu deve ser exibido no terminal e o usuário deve escolher uma opção digitando o número correspondente.
 
 
-⚠️ Regras
+### ⚠️ Regras
 
 1. O usuário não poderá utilizar `0` ou números negativos.  
 2. Caso o usuário digite um número inválido, o menu deverá ser exibido novamente.  
@@ -68,7 +68,7 @@ O menu deve ser exibido no terminal e o usuário deve escolher uma opção digit
 O usuário, ao selecionar a opção 1, deve ser capaz de cadastrar um novo pet. Neste momento, você deverá ler as **PERGUNTAS** do arquivo `formulario.txt` e armazenar as respostas em um objeto do tipo `Pet`.
 
 
- ⚠️ Regras
+### ⚠️ Regras
 
 1. O usuário obrigatoriamente deverá cadastrar um pet com **nome e sobrenome**, caso contrário, deverá ser lançada uma exceção.  
 
@@ -88,5 +88,26 @@ O usuário, ao selecionar a opção 1, deve ser capaz de cadastrar um novo pet. 
 9. No campo raça o usuário não poderá usar números nem caracteres especiais.
 10. Nas perguntas sobre NOME, RAÇA, PESO, IDADE e ENDEREÇO (somente o campo número), caso o usuário NÃO INFORME ou deixe em branco, você deverá preencher com NÃO INFORMADO (deve ser uma constante)!
 
+## 📍Passo 4: Armazenamento em Arquivo 📂
+Agora, ao salvar o PET em um objeto, você deverá salvar as respostas em um arquivo `.txt` com o nome formatado da seguinte maneira:
 
+`20231101T1234-FLORZINHADASILVA.TXT.`
 
+### Regras ⚠️
+1. O nome do arquivo deverá seguir o formato: ano, mês, dia,T, hora, minuto - NOME+SOBRENOME em maiúsculo.
+2. O arquivo deverá ser salvo na pasta `petsCadastrados` na raiz do projeto.
+3. O conteúdo do arquivo deverá conter TODAS AS RESPOSTAS POR LINHA, ou seja, cada resposta deverá estar em uma linha diferente.
+4. O campo endereço deverá ser salvo todo na mesma linha.
+5. O arquivo somente conterá RESPOSTAS, PERGUNTAS NÃO!
+
+Exemplo de arquivo salvo:
+
+```
+1 - Florzinha da Silva
+2 - Gato
+3 - Femea
+4 - Rua 2, 456, Seilandia
+5 - 6 anos
+6 - 5kg
+7 - Siames
+```
