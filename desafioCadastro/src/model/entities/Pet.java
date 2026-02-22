@@ -17,7 +17,7 @@ public class Pet {
 	private String nomeCompleto;
 	private TipoPet tipoPet;
 	private SexoPet sexoPet;
-	private Endereco endereco;
+	private EnderecoPet endereco;
 	private Double idade;
 	private Double peso;
 	private String raca;
@@ -27,7 +27,7 @@ public class Pet {
 	public Pet() {
 	}
 
-	public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, Endereco endereco, Double idade, Double peso,String raca) {
+	public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, EnderecoPet endereco, Double idade, Double peso,String raca) {
 		this.nomeCompleto = nomeCompleto;
 		this.tipoPet = tipoPet;
 		this.sexoPet = sexoPet;
@@ -61,11 +61,11 @@ public class Pet {
 		this.sexoPet = sexoPet;
 	}
 
-	public Endereco getEndereco() {
+	public EnderecoPet getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(EnderecoPet endereco) {
 		this.endereco = endereco;
 	}
 
@@ -107,7 +107,7 @@ public class Pet {
 
 	public void salvarPet() {
 
-		String nomeRegistrado = getNomeCompleto().replaceAll(" ", "");
+		String nomeRegistrado = getNomeCompleto().replaceAll(" ", "").toUpperCase();
 		LocalDateTime dataHoraAtual = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("(dd-MM-yyyy_HH-mm-ss)");
 
@@ -124,13 +124,13 @@ public class Pet {
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileCadastro))) {
-			bw.write("Nome: " + getNomeCompleto() + 
-					"\nTipo do Pet: " + formatar(getTipoPet()) + 
-					"\nSexo do Pet: "+ formatar(getSexoPet()) + 
-					"\nEndereço: " + formatar(getEndereco().getRua()) + ", " + formatar(getEndereco().getNumero()) + ", " + formatar(getEndereco().getCidade()) + 
-					"\nIdade: " + formatar(getIdade()) + " ano(s)"+ 
-					"\nPeso: " + formatar(getPeso()) + " Kg" + 
-					"\nRaça: " + formatar(getRaca()));
+			bw.write(" 1 Nome - " + getNomeCompleto() + 
+					"\n2  - " + formatar(getTipoPet()) + 
+					"\n3 Sexo - "+ formatar(getSexoPet()) + 
+					"\n4 Endereço - " + formatar(getEndereco().getRua()) + ", " + formatar(getEndereco().getNumero()) + ", " + formatar(getEndereco().getCidade()) + 
+					"\n5 Idade - " + formatar(getIdade()) + " Ano(s)"+ 
+					"\n6 Peso - " + formatar(getPeso()) + " Kg" + 
+					"\n7 Raça - " + formatar(getRaca()));
 			bw.flush();
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());

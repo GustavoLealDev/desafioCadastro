@@ -2,14 +2,14 @@ package services;
 
 import java.util.Scanner;
 
-import model.entities.Endereco;
+import model.entities.EnderecoPet;
 import model.entities.Pet;
 
 public class CadastrarPet {
 
 	Scanner sc = new Scanner(System.in);
 	Pet pet = new Pet();
-	Endereco endereco = new Endereco();
+	EnderecoPet endereco = new EnderecoPet();
 	ValidadorService validador = new ValidadorService();
 
 	public void cadastrarPet() {

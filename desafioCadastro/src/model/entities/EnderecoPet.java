@@ -1,15 +1,15 @@
 package model.entities;
 
-public class Endereco {
+public class EnderecoPet {
 
 	private String rua;
 	private Integer numero;
 	private String cidade;
 
-	public Endereco() {
+	public EnderecoPet() {
 	}
 
-	public Endereco(String rua, Integer numero, String cidade) {
+	public EnderecoPet(String rua, Integer numero, String cidade) {
 		this.rua = rua;
 		this.numero = numero;
 		this.cidade = cidade;
