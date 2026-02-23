@@ -111,3 +111,32 @@ Exemplo de arquivo salvo:
 6 - 5kg
 7 - Siames
 ```
+
+## 📍Passo 5: Buscar os dados do Pet Cadastrado 🔍
+O usuário, ao selecionar a opção 2, deverá ser capaz de buscar o pet usando determinados dados. O usuário poderá buscar o pet por:
+
+- Nome ou sobrenome
+- Sexo
+- Idade
+- Peso
+- Raça
+- Endereço
+
+Além disso, o usuário poderá combinar de 1 a 2 critérios de busca, ou seja:
+
+- Nome e / ou sobrenome E IDADE
+- Idade E peso
+
+Então, neste momento, você deverá EXIBIR um novo menu perguntando sobre quais critérios o usuário desejará usar para buscar o pet.
+
+Após o usuário selecionar os critérios, você deverá printar no terminal os pets que correspondem aos critérios de busca, podendo ser 1 ou mais, neste formato:
+
+### Regras ⚠️
+1. O usuário PRIMEIRAMENTE e SEMPRE deverá escolher o critério TIPO DE ANIMAL.
+2. O formato de resposta, deverá exibir SEMPRE uma lista de possiveis resultados, por exemplo:
+```
+1.  Rex - Cachorro - Macho  - Rua 1, 123 - Cidade 1 - 2 anos - 5kg - Vira-lata
+2.  Florzinha da Silva - Gato - Femea - Rua 2, 456 - Seilandia - 6 anos - 5kg - Siames
+```
+3. Caso o usuário escolha por exemplo, NOME, os resultados da busca devem trazer PARTES do nome, por exemplo, caso ele pesquise por FLOR, deverá trazer o caso 2 citado anteriormente.
+4. Toda busca deverá ser case-sensitive, ou seja, ignorar maiuscula e minuscula (tratando como iguais) e acentos.
