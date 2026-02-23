@@ -140,3 +140,12 @@ Após o usuário selecionar os critérios, você deverá printar no terminal os 
 ```
 3. Caso o usuário escolha por exemplo, NOME, os resultados da busca devem trazer PARTES do nome, por exemplo, caso ele pesquise por FLOR, deverá trazer o caso 2 citado anteriormente.
 4. Toda busca deverá ser case-sensitive, ou seja, ignorar maiuscula e minuscula (tratando como iguais) e acentos.
+
+## 📍Passo 6: Altera um pet cadastrado ✍️
+Permitir que o usuário altere os dados de um pet cadastrado.
+
+### Regras ⚠️
+1. O usuário deverá BUSCAR seguindo os critérios da resposta anterior.
+2. Caso o usuário digite um número de busca inválido, o menu de busca deverá ser exibido novamente.
+3. O usuário receberá uma LISTA (igual a exibição anterior) com os resultados da busca, e deverá escolher o número do pet que deseja alterar.
+4. O usuário poderá alterar TODOS os dados do pet, EXCETO o TIPO E SEXO
