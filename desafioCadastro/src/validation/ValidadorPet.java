@@ -1,11 +1,11 @@
-package services;
+package validation;
 
 import java.util.Scanner;
 
 import model.enums.SexoPet;
 import model.enums.TipoPet;
 
-public class ValidadorService {
+public class ValidadorPet {
 
 	public String validarNome(Scanner sc) {
 

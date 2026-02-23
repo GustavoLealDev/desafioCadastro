@@ -21,8 +21,8 @@ public class MenuService {
             System.out.println("5. Alterar os dados do pet cadastrado");
             System.out.println("6. Sair");
 
-            System.out.println("Digite um número de 1 a 6: ");
-            System.out.println("---------------------------------------------");
+            System.out.print("Digite um número de 1 a 6: ");
+ 
 
             if (sc.hasNextInt()) {
                 int escolha = sc.nextInt();

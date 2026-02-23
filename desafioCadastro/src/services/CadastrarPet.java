@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 import model.entities.EnderecoPet;
 import model.entities.Pet;
+import util.FormFileService;
+import validation.ValidadorPet;
 
 public class CadastrarPet {
 
 	Scanner sc = new Scanner(System.in);
 	Pet pet = new Pet();
 	EnderecoPet endereco = new EnderecoPet();
-	ValidadorService validador = new ValidadorService();
+	ValidadorPet validador = new ValidadorPet();
 
 	public void cadastrarPet() {
 		FormFileService.readLine(1);

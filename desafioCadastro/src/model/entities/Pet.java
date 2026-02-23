@@ -21,8 +21,10 @@ public class Pet {
 	private Double idade;
 	private Double peso;
 	private String raca;
-
+	
+	private String nomeArquivo;
 	private static final String NAO_INFORMADO = "Não Informado";
+	private static final Path cadastro = Paths.get("C:\\temp\\petsCadastrados");
 	
 	public Pet() {
 	}
@@ -92,6 +94,14 @@ public class Pet {
 	public void setRaca(String raca) {
 		this.raca = raca;
 	}
+	
+	public String getNomeArquivo() {
+	    return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+	    this.nomeArquivo = nomeArquivo;
+	}
 
 	public static Path getCadastro() {
 		return cadastro;
@@ -103,7 +113,6 @@ public class Pet {
 	            : valor.toString();
 	}
 
-	static final Path cadastro = Paths.get("C:\\temp\\petsCadastrados");
 
 	public void salvarPet() {
 
@@ -111,7 +120,7 @@ public class Pet {
 		LocalDateTime dataHoraAtual = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("(dd-MM-yyyy_HH-mm-ss)");
 
-		String nomeArquivo = formatter.format(dataHoraAtual) + nomeRegistrado + ".txt";
+		this.nomeArquivo = formatter.format(dataHoraAtual) + nomeRegistrado + ".txt";
 
 		File file = new File(String.valueOf(cadastro));
 		File fileCadastro = new File(file, nomeArquivo);

@@ -14,6 +14,7 @@ import model.entities.EnderecoPet;
 import model.entities.Pet;
 import model.enums.SexoPet;
 import model.enums.TipoPet;
+import validation.ValidadorPet;
 
 public class BuscarPet {
 
@@ -54,6 +55,7 @@ public class BuscarPet {
                 String raca = extrairValor(br.readLine());
 
                 Pet pet = new Pet();
+                pet.setNomeArquivo(arquivo.getName());
                 EnderecoPet enderecoPet = new EnderecoPet();
 
                 String[] enderecoSplit = endereco.split(",");
@@ -124,7 +126,7 @@ public class BuscarPet {
     public void menuBuscar() {
 
         Scanner sc = new Scanner(System.in);
-        ValidadorService validacao = new ValidadorService();
+        ValidadorPet validacao = new ValidadorPet();
 
         List<Pet> listaPets = buscarPet();
         List<Pet> listaPetsEncontrados;
@@ -169,7 +171,8 @@ public class BuscarPet {
         if (opcaoBusca1 == 2 || opcaoBusca2 == 2) {
 
             System.out.println("Você deseja buscar: (1 - Macho / 2 - Femea)");
-            int opcaoSexo = validacao.validarNumero(sc);
+            System.out.print("Escolha: ");
+            int opcaoSexo = sc.nextInt();
 
             SexoPet sexoPet;
 
@@ -199,6 +202,7 @@ public class BuscarPet {
     }
 
     public void formatarBusca(List<Pet> resultados) {
+    	System.out.println();
     	System.out.println("Resultados da busca:");	
     	System.out.println("-----------------------------------");
         if (resultados == null || resultados.isEmpty()) {
@@ -216,9 +220,7 @@ public class BuscarPet {
                     pet.getNomeCompleto(),
                     pet.getTipoPet(),
                     pet.getSexoPet(),
-                    pet.getEndereco().getRua() + ", "
-                            + pet.getEndereco().getNumero() + ", "
-                            + pet.getEndereco().getCidade(),
+                    pet.getEndereco().getRua() + ", " + pet.getEndereco().getNumero() + ", " + pet.getEndereco().getCidade(),
                     pet.getIdade(),
                     pet.getPeso(),
                     pet.getRaca()
