@@ -124,8 +124,8 @@ public class Pet {
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileCadastro))) {
-			bw.write(" 1 Nome - " + getNomeCompleto() + 
-					"\n2  - " + formatar(getTipoPet()) + 
+			bw.write("1 Nome - " + getNomeCompleto() + 
+					"\n2 Espécie - " + formatar(getTipoPet()) + 
 					"\n3 Sexo - "+ formatar(getSexoPet()) + 
 					"\n4 Endereço - " + formatar(getEndereco().getRua()) + ", " + formatar(getEndereco().getNumero()) + ", " + formatar(getEndereco().getCidade()) + 
 					"\n5 Idade - " + formatar(getIdade()) + " Ano(s)"+ 

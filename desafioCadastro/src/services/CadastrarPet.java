@@ -40,7 +40,7 @@ public class CadastrarPet {
 		pet.setPeso(validador.validarPeso(sc));
 
 		FormFileService.readLine(7);
-		pet.setRaca(sc.nextLine());
+		pet.setRaca(validador.validarRaca(sc));
 		
 		pet.salvarPet();
 

@@ -88,12 +88,33 @@ public class ValidadorService {
 			}
 		}
 	}
+	
+
+	public String validarRaca(Scanner sc) {
+		while(true) {
+			try {
+				System.out.print("R: ");
+				String raca = sc.nextLine().trim();
+				if (raca.isEmpty()) {
+					return null;
+				}
+				if (!raca.matches("[\\p{L} ]+")) {
+					throw new IllegalArgumentException("Raça não pode conter caracteres especiais ou números.");
+				}
+				return raca;
+			} catch (IllegalArgumentException e) {
+				System.out.println("Erro: " + e.getMessage());
+				System.out.print("Digite novamente: ");
+			}
+		}
+	}
 
 	public TipoPet validarTipoPet(Scanner sc) {
 
-		System.out.print("R: ");
+		
 	    while (true) {
 	        try {
+	        	System.out.print("R: ");
 	            String input = sc.nextLine().trim();
 	            int opcao = Integer.parseInt(input);
 
