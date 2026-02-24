@@ -160,3 +160,10 @@ O usuário, ao selecionar a opção de 4, deverá ser capaz de deletar o pet.
 4. O usuário deverá confirmar a exclusão do pet, digitando SIM ou NÃO.
 5. Só poderá ser deletado um pet por vez.
 6. Caso o usuário digite SIM, o pet deverá ser deletado e uma mensagem de sucesso deverá ser exibida.
+
+## Desafio criado por Lucas Carrilho - @devmagro
+ Twitter: @devmagro 🐦
+
+ Instagram: @devmagro 📸
+
+ YouTube: @devmagro 🎥
