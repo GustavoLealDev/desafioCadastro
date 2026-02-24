@@ -6,6 +6,7 @@ import java.util.Scanner;
 import services.BuscarPet;
 import services.CadastrarPet;
 import services.EditarPet;
+import services.ExcluirPet;
 import services.MenuService;
 import util.FormFileService;
 
@@ -24,6 +25,7 @@ public class Program {
         CadastrarPet cadastrarPet = new CadastrarPet();
         BuscarPet buscarPet = new BuscarPet();
         EditarPet editarPet = new EditarPet();
+        ExcluirPet excluirPet = new ExcluirPet();
 
         int opcao;
 
@@ -38,6 +40,7 @@ public class Program {
                 buscarPet.menuBuscar();
             }
             else if (opcao == 3) {
+            	excluirPet.excluirPet(sc);
             }
             else if (opcao == 4) {
                 buscarPet.exibirResultados();

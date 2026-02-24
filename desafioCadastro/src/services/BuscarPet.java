@@ -162,7 +162,7 @@ public class BuscarPet {
 
         if (opcaoBusca1 == 1 || opcaoBusca2 == 1) {
 
-            System.out.println("Digite o nome do pet: ");
+            System.out.print("Digite o nome do pet: ");
             String busca = sc.nextLine().toLowerCase().trim();
 
             listaPetsEncontrados = buscaPorNome(busca, listaPetsEncontrados);
