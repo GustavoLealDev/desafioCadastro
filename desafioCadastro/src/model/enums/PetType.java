@@ -1,13 +1,13 @@
 package model.enums;
 
-public enum TipoPet {
+public enum PetType {
 	
 	CACHORRO("Cachorro"),
 	GATO("Gato");
 	
 	private String descricao;
 	
-	TipoPet(String descricao) {
+	PetType(String descricao) {
 		this.descricao = descricao;
 	}
 	

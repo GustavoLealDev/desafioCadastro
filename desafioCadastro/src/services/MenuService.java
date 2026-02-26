@@ -25,11 +25,11 @@ public class MenuService {
  
 
             if (sc.hasNextInt()) {
-                int escolha = sc.nextInt();
+                int choice = sc.nextInt();
                 sc.nextLine();
 
-                if (escolha >= 1 && escolha <= 6) {
-                    return escolha;
+                if (choice >= 1 && choice <= 6) {
+                    return choice;
                 } else {
                     System.out.println("Número fora do intervalo. Tente novamente.\n");
                 }

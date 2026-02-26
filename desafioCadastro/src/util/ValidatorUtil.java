@@ -1,32 +1,32 @@
-package validation;
+package util;
 
 import java.util.Scanner;
 
-import model.enums.SexoPet;
-import model.enums.TipoPet;
+import model.enums.PetSex;
+import model.enums.PetType;
 
-public class ValidadorPet {
+public class ValidatorUtil {
 
-	public String validarNome(Scanner sc) {
+	public String validateName(Scanner sc) {
 
 		while (true) {
 			System.out.print("R: ");
 			try {
-				String nomeCompleto = sc.nextLine();
+				String name = sc.nextLine();
 
-				if (nomeCompleto.isBlank()) {
+				if (name.isBlank()) {
 					throw new IllegalArgumentException("Nome é obrigatório.");
 				}
 
-				if (!nomeCompleto.contains(" ")) {
+				if (!name.contains(" ")) {
 					throw new IllegalArgumentException("Informe nome e sobrenome.");
 				}
 
-				if (!nomeCompleto.matches("[a-zA-Z ]+")) {
+				if (!name.matches("[a-zA-Z ]+")) {
 					throw new IllegalArgumentException("Nome não pode conter caracteres especiais ou números.");
 				}
 
-				return nomeCompleto;
+				return name;
 
 			} catch (IllegalArgumentException e) {
 				System.out.println("Erro: " + e.getMessage());
@@ -36,7 +36,7 @@ public class ValidadorPet {
 
 	}
 
-	public Double validarIdade(Scanner sc) {
+	public Double validateAge(Scanner sc) {
 
 		System.out.print("R: ");
 		while (true) {
@@ -48,11 +48,11 @@ public class ValidadorPet {
 
 			try {
 				input = input.replace(",", ".");
-				double idade = Double.parseDouble(input);
-				if (idade < 0.5 || idade > 20) {
+				double age = Double.parseDouble(input);
+				if (age < 0.5 || age > 20) {
 					throw new IllegalArgumentException("Error: Idade deve ser um número entre 0-20 anos");
 				} else {
-					return idade;
+					return age;
 				}
 
 			} catch (NumberFormatException e) {
@@ -63,7 +63,7 @@ public class ValidadorPet {
 		}
 	}
 
-	public Double validarPeso(Scanner sc) {
+	public Double validateWeight(Scanner sc) {
 		System.out.print("R: ");
 		while (true) {
 			String input = sc.nextLine().trim();
@@ -74,11 +74,11 @@ public class ValidadorPet {
 
 			try {
 				input = input.replace(",", ".");
-				double peso = Double.parseDouble(input);
-				if (peso < 0 || peso > 60) {
+				double weight = Double.parseDouble(input);
+				if (weight < 0 || weight > 60) {
 					throw new IllegalArgumentException("Error: Peso deve ser um número entre 0-60 kg");
 				} else {
-					return peso;
+					return weight;
 				}
 
 			} catch (NumberFormatException e) {
@@ -90,18 +90,18 @@ public class ValidadorPet {
 	}
 	
 
-	public String validarRaca(Scanner sc) {
+	public String validateRace(Scanner sc) {
 		while(true) {
 			try {
 				System.out.print("R: ");
-				String raca = sc.nextLine().trim();
-				if (raca.isEmpty()) {
+				String race = sc.nextLine().trim();
+				if (race.isEmpty()) {
 					return null;
 				}
-				if (!raca.matches("[\\p{L} ]+")) {
+				if (!race.matches("[\\p{L} ]+")) {
 					throw new IllegalArgumentException("Raça não pode conter caracteres especiais ou números.");
 				}
-				return raca;
+				return race;
 			} catch (IllegalArgumentException e) {
 				System.out.println("Erro: " + e.getMessage());
 				System.out.print("Digite novamente: ");
@@ -109,19 +109,19 @@ public class ValidadorPet {
 		}
 	}
 
-	public TipoPet validarTipoPet(Scanner sc) {
+	public PetType validatePetType(Scanner sc) {
 
 		
 	    while (true) {
 	        try {
 	        	System.out.print("R: ");
 	            String input = sc.nextLine().trim();
-	            int opcao = Integer.parseInt(input);
+	            int choice = Integer.parseInt(input);
 
-	            if (opcao == 1) {
-	                return TipoPet.CACHORRO;
-	            } else if (opcao == 2) {
-	                return TipoPet.GATO;
+	            if (choice == 1) {
+	                return PetType.CACHORRO;
+	            } else if (choice == 2) {
+	                return PetType.GATO;
 	            } else {
 	                throw new IllegalArgumentException("Opção inválida. Digite 1 ou 2.");
 	            }
@@ -134,7 +134,7 @@ public class ValidadorPet {
 	    }
 	}
 	
-	public SexoPet validarSexoPet(Scanner sc) {
+	public PetSex validatePetSex(Scanner sc) {
 
 		System.out.print("R: ");
 	    while (true) {
@@ -143,9 +143,9 @@ public class ValidadorPet {
 	            int opcao = Integer.parseInt(input);
 
 	            if (opcao == 1) {
-	                return SexoPet.MACHO;
+	                return PetSex.MACHO;
 	            } else if (opcao == 2) {
-	                return SexoPet.FEMEA;
+	                return PetSex.FEMEA;
 	            } else {
 	                throw new IllegalArgumentException("Opção inválida. Digite 1 ou 2.");
 	            }
@@ -158,24 +158,22 @@ public class ValidadorPet {
 	    }
 	}
 	
-	public Integer validarNumero(Scanner input) {
+	public Integer validateNumber(Scanner sc) {
 
 	    while (true) {
 
 	        System.out.print("Digite o número da casa: ");
-	        String entrada = input.nextLine().trim();
+	        String input = sc.nextLine().trim();
 
-	        if (entrada.isEmpty()) {
+	        if (input.isEmpty()) {
 	            return null;
 	        }
 
-	        if (entrada.matches("\\d+")) {
-	            return Integer.parseInt(entrada);
+	        if (input.matches("\\d+")) {
+	            return Integer.parseInt(input);
 	        } else {
 	            System.out.println("Entrada inválida! Digite apenas números ou Enter para deixar em branco.");
 	        }
 	    }
 	}
-	
-	
 }

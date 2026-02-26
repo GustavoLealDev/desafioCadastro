@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FormFileService {
+public class FormFileUtil {
 
-	static Path path = Paths.get("C:\\temp\\formulario.txt");
+	private static Path FORM_PATH  = Paths.get("C:\\temp\\formulario.txt");
 
 	public void createFormFile() {
-		File file = path.toFile();
+		File file = FORM_PATH.toFile();
 
 		File createFolder = file.getParentFile();
 		if (!createFolder.exists()) {
@@ -38,9 +38,8 @@ public class FormFileService {
 	}
 
 	public void readFormFile() {
-		String path = "C:\\temp\\formulario.txt";
 
-		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(FORM_PATH.toFile()))) {
 			String line = br.readLine();
 			while (line != null) {
 				System.out.println(line);
@@ -51,17 +50,17 @@ public class FormFileService {
 		}
 	}
 
-	public static String readLine(int numeroPergunta) {
+	public static String readLine(int questionNumber) {
 
-		try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(FORM_PATH.toFile()))) {
 
 			String line;
 			int cont = 1;
 
 			while ((line = br.readLine()) != null) {
-				if (cont == numeroPergunta) {
+				if (cont == questionNumber) {
 					System.out.println(line);
-					break;
+					return line;
 				}
 				cont++;
 			}

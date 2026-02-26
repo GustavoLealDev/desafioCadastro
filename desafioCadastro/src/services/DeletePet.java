@@ -8,52 +8,52 @@ import java.util.Scanner;
 
 import model.entities.Pet;
 
-public class ExcluirPet {
+public class DeletePet {
 
-	static final Path cadastros = Paths.get("C:\\temp\\petsCadastrados");
+	private static final Path PET_DIRECTORY = Paths.get("C:\\temp\\petsCadastrados");
 
-	public void excluirPet(Scanner sc) {
+	public void deletePet(Scanner sc) {
 
-		BuscarPet buscarPet = new BuscarPet();
-		ArrayList<Pet> petsList = buscarPet.buscarPet();
+		SearchPet searchPet = new SearchPet();
+		ArrayList<Pet> petsList = searchPet.searchPet();
 
 		if (petsList == null || petsList.isEmpty()) {
 			System.out.println("Nenhum pet encontrado!!");
 			return;
 		}
 
-		buscarPet.formatarBusca(petsList);
+		searchPet.formatSearch(petsList);
 
 		System.out.print("Digite o número do pet que deseja excluir: ");
-		int petEscolha;
+		int petChoice;
 
 		try {
-			petEscolha = Integer.parseInt(sc.nextLine());
+			petChoice = Integer.parseInt(sc.nextLine());
 		} catch (NumberFormatException e) {
 			System.out.println("Entrada inválida. tente novamente.");
 			return;
 		}
 
-		if (petEscolha < 1 || petEscolha > petsList.size()) {
+		if (petChoice < 1 || petChoice > petsList.size()) {
 			System.out.println("Número inválido. Tente novamente.");
 			return;
 		}
 
-		Pet petEscolhido = petsList.get(petEscolha - 1);
+		Pet pet = petsList.get(petChoice - 1);
 
-		System.out.println("Tem certeza que deseja excluir o pet: " + petEscolhido.getNomeCompleto() + "? (S/N)");
-		char confirmacao = sc.next().charAt(0);
+		System.out.println("Tem certeza que deseja excluir o pet: " + pet.getName() + "? (S/N)");
+		char confirmation = sc.next().charAt(0);
 
-		if (confirmacao == 'N' || confirmacao == 'n') {
+		if (confirmation == 'N' || confirmation == 'n') {
 			System.out.println("Exclusão cancelada.");
 			return;
 		}
 
-		File path = new File(String.valueOf(cadastros));
-		File arquivoPet = new File(path, petEscolhido.getNomeArquivo());
+		File path = new File(String.valueOf(PET_DIRECTORY));
+		File petFiles = new File(path, pet.getFileName());
 
-		if (arquivoPet.exists()) {
-			if (arquivoPet.delete()) {
+		if (petFiles.exists()) {
+			if (petFiles.delete()) {
 				System.out.println("Pet excluído com sucesso!");
 			} else {
 				System.out.println("Erro ao excluir o pet. Tente novamente.");

@@ -1,13 +1,13 @@
 package model.enums;
 
-public enum SexoPet {
+public enum PetSex {
 	
 	MACHO("Macho"),
 	FEMEA("Fêmea");
 	
 	private String descricao;
 	
-	SexoPet(String descricao) {
+	PetSex(String descricao) {
 		this.descricao = descricao;
 	}
 	

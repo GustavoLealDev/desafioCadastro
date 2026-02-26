@@ -9,121 +9,118 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import model.enums.SexoPet;
-import model.enums.TipoPet;
+import model.enums.PetSex;
+import model.enums.PetType;
 
 public class Pet {
 
-	private String nomeCompleto;
-	private TipoPet tipoPet;
-	private SexoPet sexoPet;
-	private EnderecoPet endereco;
-	private Double idade;
-	private Double peso;
-	private String raca;
-	
-	private String nomeArquivo;
+	private String name;
+	private PetType petType;
+	private PetSex petSex;
+	private PetAddress address;
+	private Double age;
+	private Double weight;
+	private String race;
+
+	private String fileName;
 	private static final String NAO_INFORMADO = "Não Informado";
-	private static final Path cadastro = Paths.get("C:\\temp\\petsCadastrados");
-	
+	private static final Path PET_DIRECTORY = Paths.get("C:\\temp\\petsCadastrados");
+
 	public Pet() {
 	}
 
-	public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, EnderecoPet endereco, Double idade, Double peso,String raca) {
-		this.nomeCompleto = nomeCompleto;
-		this.tipoPet = tipoPet;
-		this.sexoPet = sexoPet;
-		this.endereco = endereco;
-		this.idade = idade;
-		this.peso = peso;
-		this.raca = raca;
+	public Pet(String name, PetType petType, PetSex petSex, PetAddress address, Double age, Double weight, String race) {
+		this.name = name;
+		this.petType = petType;
+		this.petSex = petSex;
+		this.address = address;
+		this.age = age;
+		this.weight = weight;
+		this.race = race;
 	}
 
-	public String getNomeCompleto() {
-		return nomeCompleto;
+	public String getName() {
+		return name;
 	}
 
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public TipoPet getTipoPet() {
-		return tipoPet;
+	public PetType getPetType() {
+		return petType;
 	}
 
-	public void setTipoPet(TipoPet tipoPet) {
-		this.tipoPet = tipoPet;
+	public void setPetType(PetType petType) {
+		this.petType = petType;
 	}
 
-	public SexoPet getSexoPet() {
-		return sexoPet;
+	public PetSex getPetSex() {
+		return petSex;
 	}
 
-	public void setSexoPet(SexoPet sexoPet) {
-		this.sexoPet = sexoPet;
+	public void setPetSex(PetSex petSex) {
+		this.petSex = petSex;
 	}
 
-	public EnderecoPet getEndereco() {
-		return endereco;
+	public PetAddress getAddress() {
+		return address;
 	}
 
-	public void setEndereco(EnderecoPet endereco) {
-		this.endereco = endereco;
+	public void setAddress(PetAddress address) {
+		this.address = address;
 	}
 
-	public Double getIdade() {
-		return idade;
+	public Double getAge() {
+		return age;
 	}
 
-	public void setIdade(Double idade) {
-		this.idade = idade;
+	public void setAge(Double age) {
+		this.age = age;
 	}
 
-	public Double getPeso() {
-		return peso;
+	public Double getWeight() {
+		return weight;
 	}
 
-	public void setPeso(Double peso) {
-		this.peso = peso;
+	public void setWeight(Double weight) {
+		this.weight = weight;
 	}
 
-	public String getRaca() {
-		return raca;
+	public String getRace() {
+		return race;
 	}
 
-	public void setRaca(String raca) {
-		this.raca = raca;
-	}
-	
-	public String getNomeArquivo() {
-	    return nomeArquivo;
+	public void setRace(String race) {
+		this.race = race;
 	}
 
-	public void setNomeArquivo(String nomeArquivo) {
-	    this.nomeArquivo = nomeArquivo;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public static Path getCadastro() {
-		return cadastro;
-	}
-	
-	private String formatar(Object valor) {
-	    return (valor == null || valor.toString().isBlank())
-	            ? NAO_INFORMADO
-	            : valor.toString();
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
+	public static Path getPetDirectory() {
+		return PET_DIRECTORY;
+	}
 
-	public void salvarPet() {
+	private String format(Object value) {
+		return (value == null || value.toString().isBlank()) ? NAO_INFORMADO : value.toString();
+	}
 
-		String nomeRegistrado = getNomeCompleto().replaceAll(" ", "").toUpperCase();
-		LocalDateTime dataHoraAtual = LocalDateTime.now();
+	public void savePet() {
+
+		String registeredName = getName().replaceAll(" ", "").toUpperCase();
+		LocalDateTime currentDateTime = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("(dd-MM-yyyy_HH-mm-ss)");
 
-		this.nomeArquivo = formatter.format(dataHoraAtual) + nomeRegistrado + ".txt";
+		this.fileName = formatter.format(currentDateTime) + registeredName + ".txt";
 
-		File file = new File(String.valueOf(cadastro));
-		File fileCadastro = new File(file, nomeArquivo);
+		File file = new File(String.valueOf(PET_DIRECTORY));
+		File fileRegister = new File(file, fileName);
 		if (!file.exists()) {
 			if (file.mkdirs()) {
 				System.out.println("Arquivo criado com sucesso");
@@ -132,19 +129,17 @@ public class Pet {
 			}
 		}
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileCadastro))) {
-			bw.write("1 Nome - " + getNomeCompleto() + 
-					"\n2 Espécie - " + formatar(getTipoPet()) + 
-					"\n3 Sexo - "+ formatar(getSexoPet()) + 
-					"\n4 Endereço - " + formatar(getEndereco().getRua()) + ", " + formatar(getEndereco().getNumero()) + ", " + formatar(getEndereco().getCidade()) + 
-					"\n5 Idade - " + formatar(getIdade()) + " Ano(s)"+ 
-					"\n6 Peso - " + formatar(getPeso()) + " Kg" + 
-					"\n7 Raça - " + formatar(getRaca()));
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileRegister))) {
+			bw.write("1 Nome - " + getName() + "\n2 Espécie - " + format(getPetType()) + "\n3 Sexo - "
+					+ format(getPetSex()) + "\n4 Endereço - " + format(getAddress().getRoad()) + ", "
+					+ format(getAddress().getNumberHouse()) + ", " + format(getAddress().getNeighborhood()) + "\n5 Idade - "
+					+ format(getAge()) + " Ano(s)" + "\n6 Peso - " + format(getWeight()) + " Kg" + "\n7 Raça - "
+					+ format(getRace()));
 			bw.flush();
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 
-		System.out.println("Cadastro do pet salvo em: " + fileCadastro.getAbsolutePath());
+		System.out.println("Cadastro do pet salvo em: " + fileRegister.getAbsolutePath());
 	}
 }

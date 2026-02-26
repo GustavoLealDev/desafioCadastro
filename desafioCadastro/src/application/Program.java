@@ -3,12 +3,12 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import services.BuscarPet;
-import services.CadastrarPet;
-import services.EditarPet;
-import services.ExcluirPet;
+import services.SearchPet;
+import services.CreatePet;
+import services.UpdatePet;
+import services.DeletePet;
 import services.MenuService;
-import util.FormFileService;
+import util.FormFileUtil;
 
 public class Program {
 
@@ -17,45 +17,45 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        FormFileService formFileService = new FormFileService();
+        FormFileUtil formFileService = new FormFileUtil();
         formFileService.createFormFile();
 
         MenuService menu = new MenuService(sc);
 
-        CadastrarPet cadastrarPet = new CadastrarPet();
-        BuscarPet buscarPet = new BuscarPet();
-        EditarPet editarPet = new EditarPet();
-        ExcluirPet excluirPet = new ExcluirPet();
+        CreatePet createPet = new CreatePet();
+        SearchPet searchPet = new SearchPet();
+        UpdatePet updatePet = new UpdatePet();
+        DeletePet deletePet = new DeletePet();
 
-        int opcao;
+        int option;
 
         do {
 
-            opcao = menu.printMenu();
+        	option = menu.printMenu();
 
-            if (opcao == 1) {
-                cadastrarPet.cadastrarPet();
+            if (option == 1) {
+            	createPet.createPet();
             }
-            else if (opcao == 2) {
-                buscarPet.menuBuscar();
+            else if (option == 2) {
+                searchPet.searchMenu();
             }
-            else if (opcao == 3) {
-            	excluirPet.excluirPet(sc);
+            else if (option == 3) {
+            	deletePet.deletePet(sc);
             }
-            else if (opcao == 4) {
-                buscarPet.exibirResultados();
+            else if (option == 4) {
+                searchPet.showResults();
             }
-            else if (opcao == 5) {
-                editarPet.editarPet();
+            else if (option == 5) {
+                updatePet.updatePet();
             }
-            else if (opcao == 6) {
+            else if (option == 6) {
                 System.out.println("Saindo do programa...");
             }
             else {
                 System.out.println("Opção inválida. Tente novamente.");
             }
 
-        } while (opcao != 6);
+        } while (option != 6);
 
         sc.close();
     }
